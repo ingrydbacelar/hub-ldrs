@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Extrator de Telefones</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="container">
+  <header class="cabecalho">
+    <div class="cabecalho-meta">
+      <span class="badge"><span class="badge-dot"></span>ONLINE</span>
+      <span class="meta-extra">extrator de telefones / sites do Brasil</span>
+    </div>
+    <h1>Extrator de <span class="destaque">Telefones</span><span class="cursor">_</span></h1>
+    <p class="subtitulo">Cole uma lista de sites, um por linha. A ferramenta procura o telefone na página inicial e nas páginas de contato de cada empresa.</p>
+  </header>
+
+  <section class="painel painel-entrada">
+    <div class="linha-rotulo">
+      <label class="rotulo-fraco" for="urls">Sites (um por linha)</label>
+    </div>
+    <textarea id="urls" spellcheck="false" placeholder="https://empresa.com.br&#10;https://outraempresa.com.br"></textarea>
+
+    <div class="acoes">
+      <button id="btnIniciar" class="botao botao-destaque" type="button">Extrair telefones</button>
+      <button id="btnParar" class="botao" type="button" hidden>Parar</button>
+      <button id="btnCopiar" class="botao" type="button" disabled>Copiar para planilha</button>
+      <button id="btnCsv" class="botao" type="button" disabled>Baixar CSV</button>
+      <span id="statusTexto" class="status-texto" role="status"></span>
+    </div>
+
+    <div id="progressoWrap" class="progresso-wrap" hidden>
+      <div class="progresso-barra"><div id="progressoFill" class="progresso-fill"></div></div>
+      <span id="progressoLabel"></span>
+    </div>
+
+    <details class="config">
+      <summary>Configurações</summary>
+      <label class="rotulo-fraco" for="token">Chave de acesso (só se o servidor exigir)</label>
+      <input id="token" type="password" autocomplete="off">
+    </details>
+  </section>
+
+  <div id="resultados" hidden>
+    <div class="titulo-resultados">
+      <span class="titulo-resultados-esq">Resultados</span>
+    </div>
+    <section class="painel painel-tabela">
+      <table>
+        <colgroup>
+          <col class="col-idx"><col class="col-url"><col class="col-res"><col class="col-status">
+        </colgroup>
+        <thead>
+          <tr><th>#</th><th>Site</th><th>Resultado</th><th>Status</th></tr>
+        </thead>
+        <tbody id="tabelaBody"></tbody>
+      </table>
+    </section>
+  </div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
